@@ -37,6 +37,8 @@ class Transactions extends Component {
         ) : (
           <div className="container-fluid overflow-auto h-100">
             <MaterialTable
+            className="overflow-auto"
+            
               editable={{
                 onRowAdd: newData =>
                   new Promise((resolve, reject) => {
