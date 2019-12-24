@@ -1,0 +1,17 @@
+
+
+
+.MuiPaper-root  input{
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+th{
+    font-weight: bolder !important;
+}
+
+tbody.MuiTableBody-root >:nth-of-type(2n)
+{
+    background-color: #fafafa;
+}

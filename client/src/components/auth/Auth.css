@@ -1,0 +1,17 @@
+.container {
+    height: 100%;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.input-field{
+    margin: 3px;
+}
+
+#card{
+    margin: 10px;
+}
+

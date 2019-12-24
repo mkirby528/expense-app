@@ -1,0 +1,16 @@
+nav{
+    display: flexbox;
+    height: 10%;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    #navbarCollapse {
+      background-color: #343a40 ;
+      z-index: 999;
+    }
+   
+  }
