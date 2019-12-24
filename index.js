@@ -10,18 +10,16 @@ var cors = require("cors");
 const path = require("path");
 
 var options = {
-  server: {
     socketOptions: {
       keepAlive: 300000,
       connectTimeoutMS: 30000
     }
-  },
-  replset: {
+  ,
     socketOptions: {
       keepAlive: 300000,
       connectTimeoutMS: 30000
-    }
-  },
+    },
+  
   useNewUrlParser: true,
   useUnifiedTopology: true
 };
