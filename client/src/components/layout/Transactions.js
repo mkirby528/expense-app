@@ -35,7 +35,7 @@ class Transactions extends Component {
             <span className=" sr-only">Loading...</span>
           </div>
         ) : (
-          <div className="container-fluid h-100" style={{ overflow: "auto" }}>
+          <div className="container-fluid overflow-auto h-100">
             <MaterialTable
               editable={{
                 onRowAdd: newData =>
