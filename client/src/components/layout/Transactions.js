@@ -110,9 +110,11 @@ class Transactions extends Component {
                       </Link>
                     </div>
                   </div>
-                )
+                ),
+
               }}
               options={{
+                headerStyle: { position: 'sticky', top: 0 }, maxBodyHeight: '300px',
                 exportButton: true,
                 grouping: true,
                 actionsColumnIndex: -1
