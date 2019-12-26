@@ -6,7 +6,7 @@ import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
 import "./Auth.css";
 import {FaBackspace} from "react-icons/fa";
-import "../../material.scss"
+// import "../../material.scss"
 
 class Register extends Component {
   constructor() {
