@@ -44,7 +44,7 @@ class AddTransaction extends Component {
     event.preventDefault();
     let user = this.props.auth.user.name;
 
-    axios.post("http://localhost:5000/api/transactions", {
+    axios.post("/api/transactions", {
       user: user,
       cost: this.state.cost,
       category: this.state.category,
