@@ -52,7 +52,6 @@ class AddTransaction extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    alert(this.state.isExported)
     let user = this.props.auth.user.name;
 
     axios.post("/api/transactions", {
