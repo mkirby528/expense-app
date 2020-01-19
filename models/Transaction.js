@@ -23,6 +23,10 @@ const TransactionSchema = new Schema({
   category:{
     type: String,
     required: [true, 'The category is  required']
+  },
+  isExported:{
+type: Boolean,
+required: [true, '']
 
   }
 })

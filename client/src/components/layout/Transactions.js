@@ -37,6 +37,57 @@ class Transactions extends Component {
   }
 
 
+  convertArrayOfObjectsToCSV(array, data) {
+    let result;
+    let keys = [];
+    array.forEach(element => {
+      keys.push(element.field);
+    });
+  
+    const columnDelimiter = ",";
+    const lineDelimiter = "\n";
+  
+    result = "";
+    result += keys.join(columnDelimiter);
+    result += lineDelimiter;
+  
+    data.forEach(item => {
+      if(!item.isExported){
+        return;
+      }
+      let ctr = 0;
+      keys.forEach(key => {
+        if (ctr > 0) result += columnDelimiter;
+  
+        result += item[key];
+  
+        ctr++;
+      });
+      result += lineDelimiter;
+    });
+  
+    return result;
+  }
+  
+  downloadCSV(array, data) {
+    const link = document.createElement("a");
+    let csv = this.convertArrayOfObjectsToCSV(array, data);
+    if (csv == null) return;
+  
+    const filename = "export.csv";
+  
+    if (!csv.match(/^data:text\/csv/i)) {
+      csv = `data:text/csv;charset=utf-8,${csv}`;
+    }
+  
+    link.setAttribute("href", encodeURI(csv));
+    link.setAttribute("download", filename);
+    link.click();
+  }
+
+
+
+
   render() {
     return (
       <div className="h-100">
@@ -131,6 +182,11 @@ class Transactions extends Component {
                 }}
                 options={{
                   headerStyle: { position: "sticky", top: 0 },
+                  exportCsv: (columns, data) => {
+                    this.downloadCSV(columns, data);
+
+                  },
+                  exportAllData:true,
                   maxBodyHeight: "300px",
                   exportButton: true,
                   grouping: true,
@@ -195,7 +251,9 @@ class Transactions extends Component {
                         </Select>
                       );
                     }
-                  }
+                  },
+                  { title: 'Exportable', field: 'isExported', type:"boolean", export: false },
+
                 ]}
                 data={Array.from(this.state.transactions)}
                 title="Transactions"

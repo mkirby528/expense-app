@@ -12,17 +12,22 @@ class AddTransaction extends Component {
     this.handleDayClick = this.handleDayClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRadio = this.handleRadio.bind(this);
     this.state = {
       selectedDay: undefined,
       cost: 0,
       description: "",
       category: "",
-      userCategories: undefined
+      userCategories: undefined,
+      isExported: true
     };
     axios.get("api/categories").then(res => {
       let userCategories = res.data;
       userCategories = userCategories.map(x => x.category);
-      this.setState({ userCategories: userCategories,category:userCategories[0] });
+      this.setState({
+        userCategories: userCategories,
+        category: userCategories[0]
+      });
     });
   }
 
@@ -39,9 +44,15 @@ class AddTransaction extends Component {
       [name]: value
     });
   }
+  handleRadio(event) {
+    const isExported = event.currentTarget.value === "true" ? true : false;
+    this.setState({ isExported });
+    console.log(this.state);
 
+  }
   handleSubmit(event) {
     event.preventDefault();
+    alert(this.state.isExported)
     let user = this.props.auth.user.name;
 
     axios.post("/api/transactions", {
@@ -49,7 +60,8 @@ class AddTransaction extends Component {
       cost: this.state.cost,
       category: this.state.category,
       description: this.state.description,
-      date: this.state.selectedDay
+      date: this.state.selectedDay,
+      isExported: this.state.isExported,
     });
     this.props.history.push("/transactions");
   }
@@ -111,13 +123,12 @@ class AddTransaction extends Component {
                   onChange={this.handleInputChange}
                   name="category"
                   placeholder="Select Category"
-                  
                   defaultValue={this.state.userCategories[0]}
                 >
                   {this.state.userCategories.map((x, index) => {
                     if (index === 0) {
                       return (
-                        <option   value={x} key={index}>
+                        <option value={x} key={index}>
                           {x}
                         </option>
                       );
@@ -138,6 +149,18 @@ class AddTransaction extends Component {
                   <span className=" sr-only">Loading...</span>
                 </div>
               )}
+            </div>
+            <div className="form-group">
+              <label className="text-white">Add to Exports?</label>
+              <br></br>
+            <div className="btn-group btn-group-toggle">
+            <input type="radio" name="true" id="radio-true" value="true" onChange={this.handleRadio} checked={this.state.isExported} /><label htmlFor="radio-true" className="btn btn-radio">True</label>
+
+            <input type="radio" name="false" id="radio-false" value="false" onChange={this.handleRadio} checked={!this.state.isExported} /><label htmlFor="radio-false" className="btn btn-radio">False</label>
+
+  
+ 
+</div>
             </div>
 
             <input type="submit" value="Submit" className="btn btn-primary" />
