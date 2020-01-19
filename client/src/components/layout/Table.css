@@ -19,3 +19,11 @@ tbody.MuiTableBody-root >:nth-of-type(2n)
 .table > tbody > tr > td {
     vertical-align: middle;
 }
+
+
+
+.table-responsive {
+    height: 100%;
+}
+
+

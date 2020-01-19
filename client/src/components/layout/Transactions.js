@@ -99,7 +99,7 @@ class Transactions extends Component {
             <span className=" sr-only">Loading...</span>
           </div>
         ) : (
-          <div>
+          <div className="container-fluid h-100">
             <div className="container-fluid d-none d-md-block overflow-auto h-100">
               <MaterialTable
                 className="overflow-auto"
@@ -259,7 +259,7 @@ class Transactions extends Component {
                 title="Transactions"
               />
             </div>
-            <div className="container-fluid d-block d-md-none overflow-auto h-100">
+            <div className="container-fluid d-block d-md-none  h-100 ">
               <Link to="/addTransaction" className="btn btn-block btn-primary m-2">
                 Add Transaction
               </Link>
