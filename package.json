@@ -38,7 +38,7 @@
     "@fortawesome/fontawesome-free": "^5.12.0",
     "concurrently": "^4.1.2",
     "nodemon": "^1.19.4",
-    "yarn": "^1.21.1"
+    "yarn": "^1.22.0"
   },
   "engines": {
     "node": "12.13.1"
